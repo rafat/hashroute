@@ -1,0 +1,26 @@
++--------------------------+        +---------------------------+        +---------------------------+
+|   On-Chain (HashRoute    |        |   Off-Chain (AI Agent)    |        |    On-Chain (.            |
+|      Smart Contract)     |        |                           |        |    Smart Contract)        |
++--------------------------+        +---------------------------+        +---------------------------+
+|                          |        |                           |        |                           |
+|  1. Node calls           |------->|  2. Agent detects         |        |                           |
+|     `requestReroute()`   |        |     `RerouteRequested`    |        |                           |
+|                          |        |     event.                |        |                           |
+|  - Status -> Rerouting   |        |                           |        |                           |
+|  - Emits Event           |        |                           |        |                           |
+|                          |        |  3. Agent queries DB &     |        |                           |
+|                          |        |     external APIs.        |        |                           |
+|                          |        |                           |        |                           |
+|                          |        |  4. Agent calculates      |        |                           |
+|                          |        |     new optimal route.    |        |                           |
+|                          |        |                           |        |                           |
+|                          |        |  5. Agent calls           |------->|  6. Contract verifies     |
+|                          |        |     `executeReroute()`    |        |     agent's signature.    |
+|                          |        |     with new route.       |        |                           |
+|                          |        |                           |        |  7. Contract updates      |
+|                          |        |                           |        |     `nodeRoute` & `index`.|
+|                          |        |                           |        |                           |
+|                          |        |                           |        |  - Status -> Created      |
+|                          |        |                           |        |  - Emits `RouteUpdated`   |
+|                          |        |                           |        |                           |
++--------------------------+        +---------------------------+        +---------------------------+
