@@ -12,7 +12,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className={inter.className}>
         <Web3Provider>
            <NavBar />
-          <main className="container mx-auto p-4">{children}</main>
+          <main>{children}</main>
         </Web3Provider>
       </body>
     </html>
