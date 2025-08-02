@@ -19,21 +19,32 @@
 │   ├── app
 │   │   ├── api
 │   │   ├── dashboard
+│   │   │   └── page.tsx
 │   │   ├── favicon.ico
 │   │   ├── globals.css
+│   │   ├── handover
+│   │   │   └── page.tsx
 │   │   ├── layout.tsx
 │   │   ├── page.tsx
 │   │   └── tracking
+│   │       └── page.tsx
 │   ├── components
+│   │   ├── HomePage.tsx
+│   │   ├── NavBar.tsx
+│   │   └── Web3Context.tsx
 │   ├── hooks
-│   └── lib
-│       └── contracts
-│           ├── abis
-│           │   ├── index.ts
-│           │   ├── OracleRegistry.json
-│           │   ├── Shipment.json
-│           │   └── ShipmentFactory.json
-│           └── index.ts
+│   ├── lib
+│   │   ├── contracts
+│   │   │   ├── abis
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── OracleRegistry.json
+│   │   │   │   ├── Shipment.json
+│   │   │   │   └── ShipmentFactory.json
+│   │   │   └── index.ts
+│   │   └── supabaseClient.ts
+│   └── types
+│       ├── contracts.ts
+│       └── global.d.ts
 └── tsconfig.json
 
-13 directories, 24 files
+15 directories, 33 files
