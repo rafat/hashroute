@@ -8,7 +8,7 @@ const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY!;
 const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
 
 const ALGORITHM = 'aes-256-gcm';
-const MASTER_KEY = Buffer.from(process.env.MASTER_ENCRYPTION_KEY!, 'utf-8');
+const MASTER_KEY = Buffer.from(process.env.MASTER_ENCRYPTION_KEY!, 'hex');
 
 /**
  * Encrypts a plaintext secret and stores it in the database.
@@ -27,8 +27,10 @@ export async function storeSecret(tokenId: number, plaintextSecret: Buffer): Pro
     .from('encrypted_secrets')
     .insert({
       token_id: tokenId,
-      iv: iv.toString('hex'),
-      // We combine ciphertext and authTag for storage
+      // ==========================================================
+      // THE FIX IS HERE: We now correctly save the IV.
+      // ==========================================================
+      iv: iv.toString('hex'), 
       ciphertext: Buffer.concat([ciphertext, authTag]).toString('hex'),
     });
 
